@@ -1,35 +1,32 @@
-import java.io.*;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Scanner;
+public class java04 {
+    public static void main(String[] args) throws NumberFormatException {
+        Scanner scan = new Scanner(System.in);
+        ArrayList<int[]> list = new ArrayList<>();
 
-class Time{
+        int n = scan.nextInt();
+        boolean a = false;
 
-    public boolean timeTerm(int[][] time){
-
-    }
-}
-
-
-public class java04{
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-
-
-        Time time = new Time();
-        String stringTime = br.readLine();
-        String[] stringTimeArray = stringTime.split(",");
-
-        int[] intTimeArray = Arrays.stream(stringTimeArray).mapToInt(Integer::parseInt).toArray();
-
-        for(int i = 0; i < intTimeArray.length; i++) {
-            if(i % 2 != 0) {
-                intTimeArray.
-            }
+        for(int i = 0; i < n; i++) {
+            int[] array = new int [2];
+                array[0] = scan.nextInt();
+                array[1] = scan.nextInt();
+            list.add(array);
         }
 
-        time.timeTerm(intTimeArray);
+        for(int i = 0; i < list.size() - 1; i++) {
+            for(int j = i + 1; j < list.size(); j++) {
+                if(list.get(j)[0] > list.get(i)[1] || list.get(j)[1] < list.get(i)[0]) {
+                    continue;
+                }
+                else {
+                    a = true;
+                    break;
+                }
+            }
+        }
+        System.out.println(a);
 
-        br.close();
-        bw.close();
     }
 }
